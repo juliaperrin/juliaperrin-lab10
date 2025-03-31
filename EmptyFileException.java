@@ -1,4 +1,4 @@
-import java.io.IoException;
+import java.io.IOException;
 
 public class EmptyFileException extends IOException {
    public EmptyFileException(String message) {

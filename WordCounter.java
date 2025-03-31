@@ -69,7 +69,7 @@ public class WordCounter {
       int option = 0;
       
       while (option != 1 && option != 2) {
-         System.out.println("Choose one of the following options: (1) to process a file, or (2) to process a text string: ";
+         System.out.println("Choose one of the following options: (1) to process a file, or (2) to process a text string: ");
          try {
             option = Integer.parseInt(input.nextLine());
          } catch (NumberFormatException e) {
@@ -101,14 +101,14 @@ public class WordCounter {
       } catch (InvalidStopwordException reentryOk) {
          System.out.println(reentryOk);
          System.out.println("Stopword not found, enter a new stopword: ");
-         stopword = input.nextLine():
+         stopword = input.nextLine();
          try {
             int wordCount = processText(text, stopword);
-            System.out.println("Found " + wordcount + " words");
+            System.out.println("Found " + wordCount + " words");
          } catch (InvalidStopwordException reentryNotOk) {
             System.out.println(reentryNotOk);
          } catch (TooSmallText reentryNotOk) {
-            System.out.println(reentryNotok);
+            System.out.println(reentryNotOk);
          }
          
       } catch (TooSmallText reentryOk) {
