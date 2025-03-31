@@ -98,7 +98,23 @@ public class WordCounter {
       try {
          int wordCount = processText(text, stopword);
          System.out.println("Found " + wordCount + " words.");
-      } catch (InvalidStopwordException e1) {
+      } catch (InvalidStopwordException reentryOk) {
+         System.out.println(reentryOk);
+         System.out.println("Stopword not found, enter a new stopword: ");
+         stopword = input.nextLine():
+         try {
+            int wordCount = processText(text, stopword);
+            System.out.println("Found " + wordcount + " words");
+         } catch (InvalidStopwordException reentryNotOk) {
+            System.out.println(reentryNotOk);
+         } catch (TooSmallText reentryNotOk) {
+            System.out.println(reentryNotok);
+         }
+         
+      } catch (TooSmallText reentryOk) {
+         System.out.println(reentryOk);
+      }
+   }
       
       
          
