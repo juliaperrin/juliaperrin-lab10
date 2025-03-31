@@ -18,7 +18,7 @@ public class WordCounter {
       
       while (matcher.find()) {
          count++;
-         if (!stopwordFound && matcher.group().equals(stopword)) {
+         if (!stopwordFound && matcher.group().equalsIgnoreCase(stopword)) {
             stopwordFound = true;
             break;
          }
@@ -53,7 +53,7 @@ public class WordCounter {
       
       StringBuffer content = new StringBuffer();
       while (scanner.hasNextLine()) {
-         content.append(scanner.nextLine()).append(" ");
+         content.append(scanner.nextLine());
       }
       scanner.close();
       
@@ -61,7 +61,7 @@ public class WordCounter {
          throw new EmptyFileException(path + " was empty");
       }
       
-      return new StringBuffer(content.toString().trim());
+      return new StringBuffer(content.toString());
    }
    
    public static void main(String[] args) {
@@ -115,7 +115,7 @@ public class WordCounter {
          System.out.println(reentryOk);
       }
    }
-      
+}
       
          
       
