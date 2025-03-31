@@ -9,30 +9,30 @@ public class WordCounter {
       Pattern pattern = Pattern.compile(REGEX);
       Matcher matcher = pattern.matcher(text);
       int count = 0;
-      boolean stopwordFound;
-      if (stopword == null) {
-         stopwordFound = true;
-      } else {
-         stopwordFound = false;
-      }
-      
+      int stopwordIndex = -1;
+
       while (matcher.find()) {
          count++;
-         if (!stopwordFound && matcher.group().equalsIgnoreCase(stopword)) {
-            stopwordFound = true;
-            break;
+         if (stopword != null && stopwordIndex == -1 && matcher.group().equalsIgnoreCase(stopword)) {
+            stopwordIndex = count;
          }
+         
       }
-     
+      
+      
       if (count < 5) {
          throw new TooSmallText(count);
       }
       
-      if (!stopwordFound) {
+      if (stopword != null && stopwordIndex == -1) {
          throw new InvalidStopwordException(stopword);
       }
       
-      return count;
+      if (stopword != null) {
+         return stopwordIndex;
+      } else {
+         return count;
+      }
    }
    
    public static StringBuffer processFile(String path) throws EmptyFileException {
